@@ -2,6 +2,7 @@
 Environment and solver code for The Assistive Multi-Armed Bandit (2019).
 
 ## Why assistive bandits?
+![In each round, the human observes reward and tells the robot which arms they would like it to pull. The robot observes these requests, attempts to infer the reward values, and selects an arm to pull.](figures/ab_teaser_v4.pdf)
 
 ## Installation 
 
