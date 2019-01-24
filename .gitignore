@@ -1,0 +1,14 @@
+*.DS_Store
+*.pyc
+*.egg-info
+*~
+test_outpu
+*.pdf
+*.png
+*.csv
+*.xlsx
+*ipynb_checkpoints
+*.tsv
+mab_exps_full/
+.idea
+*__pycache__
