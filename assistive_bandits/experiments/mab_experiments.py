@@ -35,7 +35,7 @@ human_policy_dict = {'eps-greedy': EpsGreedyBanditPolicy,
 human_wrapper_dict = {"preemptive": HumanCRLWrapper, "turn-taking": HumanIterativeWrapper,
                       "teleop": HumanTeleopWrapper}
 
-local_test=True
+local_test=False
 force_remote=False
 
 if force_remote and not local_test:
