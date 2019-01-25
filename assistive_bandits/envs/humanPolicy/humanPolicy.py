@@ -229,8 +229,6 @@ class EpsGreedyBanditPolicy(HumanPolicy):
         probability epsilon.
     """
     def __init__(self, env, epsilon = 0.1):
-        assert (isinstance(env.observation_space, Discrete) \
-                or isinstance(env.observation_space, spaces.Discrete))
         assert (isinstance(env.action_space, Discrete) \
                 or isinstance(env.action_space, spaces.Discrete))
         
@@ -312,8 +310,6 @@ class WSLSBanditPolicy(HumanPolicy):
         If the arm's reward is lower than average, switch to a random other arm.
     """
     def __init__(self, env):
-        assert (isinstance(env.observation_space, Discrete) \
-                or isinstance(env.observation_space, spaces.Discrete))
         assert (isinstance(env.action_space, Discrete) \
                 or isinstance(env.action_space, spaces.Discrete))
         super(WSLSBanditPolicy, self).__init__(env)

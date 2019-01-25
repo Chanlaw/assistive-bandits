@@ -27,7 +27,7 @@ class EpsOptimalBanditPolicy(HumanPolicy):
         super(EpsOptimalBanditPolicy, self).__init__(env)
         
     def reset(self):
-        #reset empirical mean table
+        #reset actual mean table
         self.means = np.array([arm.mean() for arm in self.env.arms])
         
     def get_action(self, obs):
@@ -74,7 +74,7 @@ class EpsOptimalBanditPolicy(HumanPolicy):
 
 class BoltzmannOptimalBanditPolicy(HumanPolicy):
     """
-    Epsilon-greedy policy for Bandit problems, but with access to the true arm means. Pulls arms
+    Boltzmann-rational policy for Bandit problems, with access to the true arm means. Pulls arms
     proportional to the exponent of their mean. 
     """
     def __init__(self, env, softmax_temp=0.2):
@@ -106,7 +106,7 @@ class BoltzmannOptimalBanditPolicy(HumanPolicy):
     def get_initial_state(self, arm_means=None, **kwargs):
         if arm_means is None:
             arm_means = np.array([arm.mean() for arm in self.env.arms])
-        return {'means': arm_means}
+        return {'means': arm_means, 'temp':self.softmax_temp}
 
     def get_action_from_state(self, state, obs):
         act_dist = softmax(state['means']/state['temp'])
