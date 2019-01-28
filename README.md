@@ -1,5 +1,5 @@
 # Assistive Bandits
-Environment and solver code for The Assistive Multi-Armed Bandit (2019).
+Environment and solver code for [The Assistive Multi-Armed Bandit (2019)](https://arxiv.org/abs/1901.08654).
 
 ## Introduction to our framework
 Traditionally, techniques for preference learning assume that human behavior can be modelled as (noisily-)optimal with respect to a set of fixed preferences. However, our revealed preferences change all the time - especially in cases where we might not be fully aware of our preferences! For example, when we're organizing our desks, we might experiment with different configurations, to see what works.
@@ -13,7 +13,7 @@ Now imagine a personal robot is trying to help you organize that same desk. If t
 
 The assistive bandit framework seeks to formalize the task of helping an agent that is still learning about their preferences. It extends the [Multi-Armed Bandit](https://en.wikipedia.org/wiki/Multi-armed_bandit) model of reinforcement learning, and is heavily inspired by the [Cooperative Inverse Reinforcement Learning](https://arxiv.org/abs/1606.03137) framework. In each round, the human selects an action, referred to in the bandit setting as an arm.  However, the robot intercepts their intended action and chooses a (potentially different) arm to pull. The human then observes the pulled arm and corresponding reward, and the process repeats.
 
-Despite appearing simple, we believe the framework captures interesting issues of information assymmetry and preference uncertainty that lie at the heart of assisting a learning agent. (See our paper for more details!)
+Despite appearing simple, we believe the framework captures interesting issues of information assymmetry and preference uncertainty that lie at the heart of assisting a learning agent. (See [our paper](https://arxiv.org/abs/1901.08654) for more details!)
 
 ### "Human" Policies
 
