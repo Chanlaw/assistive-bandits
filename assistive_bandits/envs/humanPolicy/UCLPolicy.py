@@ -12,23 +12,16 @@ from sandbox.rocky.tf.spaces.discrete import Discrete #supercedes the gym spaces
 from assistive_bandits.envs.utils import softmax
 from assistive_bandits.envs.humanPolicy.humanPolicy import HumanPolicy
 
-# class UCLGaussianBanditPolicy(HumanPolicy):
-# 	"""
-#     Upper Credible Limit (Reverdy et al 2014) algorithm for bandit problems with softmax action selection noise. 
-
-#     Uses Gaussian Prior. 
-#     """
-
 
 class DeterministicUCLBetaBernoulliBanditPolicy(HumanPolicy):
     """
-    Upper Credible Limit (Reverdy et al 2014) algorithm for bandit problems with deterministic action selection noise. 
+    Upper Credible Limit (Reverdy et al 2014) algorithm for bandit problems with no action selection noise. 
     
     Basically just Bayes-UCB.
 
     Uses Beta Bernoulli Prior. 
     """
-    def __init__(self, env, K=4, prior_a=1, prior_b=1, softmax_temp=4):
+    def __init__(self, env, K=4, prior_a=1, prior_b=1):
         assert (isinstance(env.observation_space, Discrete) \
                 or isinstance(env.observation_space, spaces.Discrete))
         assert (isinstance(env.action_space, Discrete) \
@@ -40,7 +33,6 @@ class DeterministicUCLBetaBernoulliBanditPolicy(HumanPolicy):
         super(DeterministicUCLBetaBernoulliBanditPolicy, self).__init__(env)
     
     def reset(self):
-        #reset "Q" Table and success/failure counts
         self.t = 0
         self.successes = np.full(self.env.nA, self.prior_a, dtype=np.int32)
         self.failures = np.full(self.env.nA, self.prior_b, dtype=np.int32)
@@ -134,7 +126,6 @@ class UCLBetaBernoulliBanditPolicy(HumanPolicy):
         super(UCLBetaBernoulliBanditPolicy, self).__init__(env)
     
     def reset(self):
-        #reset "Q" Table and success/failure counts
         self.t = 0
         self.successes = np.full(self.env.nA, self.prior_a, dtype=np.int32)
         self.failures = np.full(self.env.nA, self.prior_b, dtype=np.int32)

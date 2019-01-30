@@ -224,9 +224,10 @@ class SoftmaxBanditPolicy(HumanPolicy):
 
 class EpsGreedyBanditPolicy(HumanPolicy):
     """
-    Epsilon-greedy policy for bandit problems. Maintain the empirical means of each of the arms, 
-        then choose the arm with highest mean with probability 1-epsilon and a random arm with 
-        probability epsilon.
+    Tabular Epsilon-greedy policy for discrete problems.
+
+    Maintain the empirical means of each of the actions then choose the action with highest mean
+        with probability 1-epsilon and a random action with probability epsilon.
     """
     def __init__(self, env, epsilon = 0.1):
         assert (isinstance(env.action_space, Discrete) \
